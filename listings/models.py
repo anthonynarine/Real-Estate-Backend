@@ -35,20 +35,12 @@ class Listing(models.Model):
     parking = models.BooleanField(default=False)
     date_posted = models.DateTimeField(default=timezone.now)
     location = models.PointField(blank=True, null=True, srid=4326)
+    # timezone must be import for this field to work. 
 
     
+        
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+#                    // Model   NOTE(s)\\
 #                    choices field
 # If choices are given, they’re enforced by 
 # model validation and the default form widget will be a select box with 
