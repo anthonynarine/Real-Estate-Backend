@@ -8,13 +8,14 @@ PostgreSQL & PostGIS setup.
     d. Right clice on DB refresh and all functions should show up. 
     https://www.youtube.com/watch?v=LhKj-_-CCfY&t=383s (tutorial if needed)
 
-    pipenv install psycopg2-binary (must installed to connect PostgreSql db)
+    e. pipenv install psycopg2-binary (must installed to connect      PostgreSql db)
 
-     
+    f. in database check schemas > <look for model name under tables>
+       right click to view/edit data > all rows to see columns create. 
 
+    
 
     (PostgreSQL & PostGIS) works better with spacial data
-
 
     Spatial data - is any type of data that
     directly or indirectly references a specific
@@ -23,3 +24,21 @@ PostgreSQL & PostGIS setup.
     data can also numerically represent a physical object in 
     a geographic coordinate system. However, spatial data is 
     much more than a spatial component of a map.
+
+
+
+
+    # users app with user model notes.  
+
+        Registration syntax in app admin file
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+
+    admin.site.register(User)
+
+    # in project settings
+    #here users is the name of the app User is the User class created in models.py
+    AUTH_USER_MODEL = "users.User"
+
+
+    Django Forms used to create listing in order to handle Latitude and Longitude fields. 
