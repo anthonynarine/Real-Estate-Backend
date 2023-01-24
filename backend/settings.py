@@ -11,14 +11,16 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import os
 
+# GDAL and GEO Django code block END.
+import os
 if os.name == 'nt':
     VENV_BASE = os.environ['VIRTUAL_ENV']
     os.environ['PATH'] = os.path.join(
         VENV_BASE, 'Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
     os.environ['PROJ_LIB'] = os.path.join(
         VENV_BASE, 'Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
+# GDAL and GEO Django code block END.
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,7 +50,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.gis",
     
-    "listings", 
+    "listings",
+    "users",
+    "rest_framework",
+    'corsheaders', 
 ]
 
 MIDDLEWARE = [
@@ -86,9 +91,13 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'RealEstateDB',
+        "HOST": "localhost",
+        "USER": "postgres",
+        "PASSWORD": "Iyla2021!",
+        "PORT": "5432"
     }
 }
 
@@ -139,3 +148,7 @@ try:
     from backend import *
 except ImportError:
     pass
+
+
+#here users is the name of the app User is the User class created in models.py
+AUTH_USER_MODEL = "users.User"

@@ -8,6 +8,8 @@ django = "*"
 django-restframework = "*"
 mysqlclient = "*"
 django-cors-headers = "*"
+djangorestframework = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
