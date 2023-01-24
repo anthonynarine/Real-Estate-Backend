@@ -4,7 +4,6 @@ from django.utils import timezone
 from django.contrib.gis.geos import Point
 
 
-
 class Listing(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField(null=True, blank=True)
@@ -20,7 +19,7 @@ class Listing(models.Model):
         ("Office", "Office"), ("Commercial space", "Commercial Space"),
         ("Parking Space", "Parking Space")
     )
-    Listing_type = models.CharField(
+    listing_type = models.CharField(
         max_length=20, choices=choices_listing_type)
     choices_propery_status = (("Sale", "Sale"), ("Rent", "Rent"))
     property_status = models.CharField(
@@ -33,8 +32,8 @@ class Listing(models.Model):
     )
     rental_frequency = models.CharField(
         max_length=20, blank=True, null=True, choices=choices_rental_frequencey)
-    room = models.IntegerField(blank=True, null=True)
-    furnised = models.BooleanField(default=False)
+    rooms = models.IntegerField(blank=True, null=True)
+    furnished = models.BooleanField(default=False)
     pool = models.BooleanField(default=False)
     elevator = models.BooleanField(default=False)
     parking = models.BooleanField(default=False)
@@ -50,7 +49,7 @@ class Listing(models.Model):
     
 
 
-#                    // Model   NOTE(s)\\
+#                   // Model   NOTE(s)\\
 
 #                    choices field
 # If choices are given, they’re enforced by

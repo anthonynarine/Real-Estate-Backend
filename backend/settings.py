@@ -30,7 +30,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'RealEstateDB',
+        "HOST": "localhost",
+        "USER": "postgres",
+        "PASSWORD": "Iyla2021!",
+        "PORT": "5432"
+    }
+}
 
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = "django-insecure-zdxrow%0w%cb@dbhcgv0nci+(aetv7-tj#giivcees=p5lc#&y"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

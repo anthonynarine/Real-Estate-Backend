@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from listings import views as listings_views 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/listings/", listings_views.ListingList.as_view()),
 ]
+
+
+# NOTE for class based view listings views is imported and named as listing_view
+#      the path to that view is wiritten as shown above. 
+#      view_name.class_name.as_view()

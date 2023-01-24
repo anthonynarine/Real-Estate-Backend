@@ -46,10 +46,9 @@ class ListingsForm(forms.ModelForm):
             # "__all__" magic method explained
             # NOTE this list of fields from Listing is easily added with "__al__"
             # magic method
-        # fields = ["title", "description", "area", "listing_type",
-        #           "property_status", "price", "rental_frequency",
-        #           "rooms", "furnished", "pool", "elevator", "parking",
-        #           "date_posted", "location"]
+        #  fields = ["title", "description", "area", "listing_type", "property_status", "price", "rental_frequency",
+        #           "rooms", "furnished", "pool", "elevator", "parking", "date_posted", "location", "location",
+        #           "latitude", "longitude"]
 
         # NOTE the syntax above to add additional fields
 
