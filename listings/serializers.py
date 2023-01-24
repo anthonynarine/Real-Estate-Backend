@@ -3,5 +3,5 @@ from listings.models import Listing
 
 class ListingSerializer(serializers.ModelSerializer):    
     class Meta:
-        model = Listing
+        model= Listing
         fields = "__all__"

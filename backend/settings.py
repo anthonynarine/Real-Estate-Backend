@@ -12,15 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
-# GDAL and GEO Django code block END.
-import os
-if os.name == 'nt':
-    VENV_BASE = os.environ['VIRTUAL_ENV']
-    os.environ['PATH'] = os.path.join(
-        VENV_BASE, 'Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
-    os.environ['PROJ_LIB'] = os.path.join(
-        VENV_BASE, 'Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
-# GDAL and GEO Django code block END.
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,20 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'RealEstateDB',
-        "HOST": "localhost",
-        "USER": "postgres",
-        "PASSWORD": "Iyla2021!",
-        "PORT": "5432"
-    }
-}
 
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-zdxrow%0w%cb@dbhcgv0nci+(aetv7-tj#giivcees=p5lc#&y"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -145,11 +124,23 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+##  NOTE  additional code for this project. 
 
 try:
-    from backend import *
+    from backend.local_settings import *
 except ImportError:
     pass
+
+
+# GDAL and GEO Django code block start.
+import os
+if os.name == 'nt':
+    VENV_BASE = os.environ['VIRTUAL_ENV']
+    os.environ['PATH'] = os.path.join(
+        VENV_BASE, 'Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
+    os.environ['PROJ_LIB'] = os.path.join(
+        VENV_BASE, 'Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
+# GDAL and GEO Django code block END.
 
 
 #here users is the name of the app User is the User class created in models.py
