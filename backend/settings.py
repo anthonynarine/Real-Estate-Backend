@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "listings",
     "users",
     "rest_framework",
+    "rest_framework_gis",
     'corsheaders', 
 ]
 
