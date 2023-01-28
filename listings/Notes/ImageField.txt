@@ -1,9 +1,12 @@
 
                     ImageFiled notes and setup
+
+                    pipenv install pillow (see notes on library below)
+                  
                  
 When images are uploaded from the form they will all end up in the root project folder.
 It will be an mess. to avoid this the code below needs to be added to the project settings.
- 
+
     in this project its added below STATIC_URL = "static/"
 
     MEDIA_URL = "/media/"
@@ -20,4 +23,31 @@ It will be an mess. to avoid this the code below needs to be added to the projec
 
     This all will create a midia folder in the project root folder for all the images to be stored.  
 
+                    Model Update
+        in models.py add the argument ~upload_to="pictures/%Y/%m/%d/"~ to the ImageField
+        picture1 = models.ImageField(blank=True, null=True, upload_to="pictures/%Y/%m/%d/")
 
+    This will create a new folder called (pictures) in the above created media folder.
+    This pictures folder will contain a folder with the year, which will contain a folder
+    with the month, which will contain a folder with the day. in this folder the image 
+    will be stored on that day it was created. 
+    midia/pictures/2023/01/28(asset)
+    
+
+
+
+
+
+
+    ~Pillow Library by  Alex Clark and Contributors~
+The Python Imaging Library adds image processing capabilities
+to your Python interpreter.
+
+This library provides extensive file format support, an efficient 
+internal representation, and fairly powerful image processing capabilities.
+
+The core image library is designed for fast access to data stored in a few 
+basic pixel formats. It should provide a solid foundation for a general image 
+processing tool.
+
+END
