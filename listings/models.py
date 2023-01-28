@@ -39,12 +39,15 @@ class Listing(models.Model):
     parking = models.BooleanField(default=False)
     date_posted = models.DateTimeField(default=timezone.now)
     location = models.PointField(blank=True, null=True, srid=4326)
+    picture1 = models.ImageField(blank=True, null=True)
     
     
     
     def __str__(self):
         return self.title
     
+    
+    # pipenv install pillow will allow us to use imageFields in Django. 
     
     
 

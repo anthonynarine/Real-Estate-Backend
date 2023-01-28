@@ -10,6 +10,8 @@ mysqlclient = "*"
 django-cors-headers = "*"
 djangorestframework = "*"
 psycopg2-binary = "*"
+gdal = {path = "c:/Users/fanar/Downloads/GDAL-3.4.3-cp310-cp310-win_amd64.whl"}
+pillow = "*"
 
 [dev-packages]
 

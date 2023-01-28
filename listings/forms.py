@@ -9,7 +9,7 @@ class ListingsForm(forms.ModelForm):
     class Meta:
         model = Listing
         fields = "__all__"
-        extra_fields = ["latitude", "longitude"]
+        extra_fields = ["latitude", "longitude", "picture1"]
 
     latitude = forms.FloatField()
     longitude = forms.FloatField()
@@ -25,10 +25,10 @@ class ListingsForm(forms.ModelForm):
         data["location"] = Point(latitude, longitude, srid=4326)
         return data
 
-#   NOTE this code will overide the init form method without the overide
-#        the entered latitude and longitude in the forms will disapear
+#   NOTE this code will overide the init form method. without the overide
+#        the entered latitude and longitude in the form will disapear
 #        The location will be marked on the map but we want to show the
-#         entered latitude and longitude.
+#         entered latitude and longitude in the form 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         location = self.initial.get("location")

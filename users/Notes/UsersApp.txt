@@ -1,0 +1,14 @@
+# users app with user model notes.  
+
+        Registration syntax in app admin file
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+
+    admin.site.register(User)
+
+    # in project settings
+    #here users is the name of the app User is the User class created in models.py
+    AUTH_USER_MODEL = "users.User"
+
+
+    Django Forms used to create listing in order to handle Latitude and Longitude fields. 

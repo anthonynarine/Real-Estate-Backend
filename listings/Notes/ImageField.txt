@@ -1,0 +1,23 @@
+
+                    ImageFiled notes and setup
+                 
+When images are uploaded from the form they will all end up in the root project folder.
+It will be an mess. to avoid this the code below needs to be added to the project settings.
+ 
+    in this project its added below STATIC_URL = "static/"
+
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+    import os
+
+    os must be impoorted in project settings
+
+
+    MEDIA_ROOT takes two arguments
+        1. the first is the base directory which is predefined in the project settings.
+        2. "media" this tells the operating system to join the base directory path of this 
+            project with media url with a forward slash. 
+
+    This all will create a midia folder in the project root folder for all the images to be stored.  
+
+
