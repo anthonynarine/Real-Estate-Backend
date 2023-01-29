@@ -1,0 +1,30 @@
+
+
+
+# Serving files (images) uploaded by a user during development
+
+    #imports    
+from django.conf import settings
+from django.conf.urls.static import static
+
+    add this code after the urlspatterns array
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    as shown below
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/listings/", listings_views.ListingList.as_view()),   
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+We also need to serve the static files of the application since the front end is 
+handled by react. 
+
+         in setting.py file 
+
+STATIC_URL = "static/"
+~ STATIC_ROOT = os.path.join(BASE_DIR, "static")~ # under STATIC_URL
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+         
+    

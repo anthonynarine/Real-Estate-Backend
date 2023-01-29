@@ -1,0 +1,41 @@
+REST implementation of Django authentication system. 
+djoser library provides a set of Django Rest Framework 
+views to handle basic actions such as registration, login,
+logout, password reset and account activation. It works with 
+custom user model.
+
+
+1. pipenv install  djoser
+2. add "djoser", to installed apps
+
+        (code below taken from djoser Docs » Authentication Backends )
+3. add 'rest_framework.authtoken', to installed apps
+
+4. Add the below 2 urls to project urlspatterns.
+
+        djoser docs example 
+    url(r'^auth/', include('djoser.urls')),
+    url(r'^auth/', include('djoser.urls.authtoken')),
+
+        converted from regex
+    path("api-auth-djoser/", include('djoser.urls')),
+    path("api-auth-djoser/", include('djoser.urls.authtoken')),
+        ~make sure to import include.
+
+        the url "api-auth-djoser/" is where users will send their request to
+        when the try to register or login. 
+
+5. Add code below to settings.py (add at the bottom)
+
+    REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+            'rest_framework.authentication.TokenAuthentication',
+            (...) 
+        ),
+}
+        ~ DELETE () AND 3 DOTS 
+
+6. Run the migrate command. 
+
+
+

@@ -14,13 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from listings import views as listings_views 
+
+# Serving files (images) uploaded by a user during development below imports needed
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/listings/", listings_views.ListingList.as_view()),
-]
+    path("api/listings/", listings_views.ListingList.as_view()), 
+    path("api-auth-djoser/", include('djoser.urls')),
+    path("api-auth-djoser/", include('djoser.urls.authtoken')),
+  
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# + static (settings..... is part of serving uploaded media files )
+# https://docs.djangoproject.com/en/4.1/howto/static-files/
+
 
 
 # NOTE for class based view listings views is imported and named as listing_view
