@@ -9,7 +9,7 @@ class ListingsForm(forms.ModelForm):
     class Meta:
         model = Listing
         fields = "__all__"
-        extra_fields = ["latitude", "longitude", "picture1", "picture2",]
+        extra_fields = ["latitude", "longitude", "picture1", "picture2", "picture3", "picture4", "picture5",]
 
     latitude = forms.FloatField()
     longitude = forms.FloatField()
