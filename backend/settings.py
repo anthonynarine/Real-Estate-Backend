@@ -172,3 +172,10 @@ REST_FRAMEWORK = {
             'rest_framework.authentication.TokenAuthentication',
         ),
 }
+
+# The key value pair come directly from djoser documentation.  see react form notes for 
+# full detal on this setup needed to handle registration request.
+DJOSER = {
+    "USER_CREATE_PASSWORD_RETYPE" : True,
+    "SEND_ACTIVATION_EMAIL": False,
+}

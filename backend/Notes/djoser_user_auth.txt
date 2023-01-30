@@ -37,5 +37,11 @@ custom user model.
 
 6. Run the migrate command. 
 
+    the token stable should now show up in the admin panel of the db
+    everytime a user logs into the app a token will be used as a key 
+    to access some data. whe the user logs out the token is destroyed. 
+
+7. front end registration page setup
+
 
 
