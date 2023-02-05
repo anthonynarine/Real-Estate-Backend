@@ -1,40 +1,46 @@
-from django import forms
-from .models import Listing
-from django.contrib.gis.geos import Point
+# from django import forms
+# from .models import Listing
+# from django.contrib.gis.geos import Point
 
-#       NOTE  this from must be registered in admin.py
+# #       NOTE  this from must be registered in admin.py
 
+#                 #  FORM FUNCTIONALITY START  #          
 
-class ListingsForm(forms.ModelForm):
-    class Meta:
-        model = Listing
-        fields = "__all__"
-        extra_fields = ["latitude", "longitude", "picture1", "picture2", "picture3", "picture4", "picture5",]
+# class ListingsForm(forms.ModelForm):
+#     class Meta:
+#         model = Listing
+#         fields = "__all__"
+#         extra_fields = ["latitude", "longitude", "picture1", "picture2", "picture3", "picture4", "picture5",]
 
-    latitude = forms.FloatField()
-    longitude = forms.FloatField()
+#     latitude = forms.FloatField()
+#     longitude = forms.FloatField()
 
-# CLEAN Method allows us to perform some logic and manipulate the form
-# The super() method allows us access to the form itself.
-# Data is a dictionalry with key:value pair we extract into
-# latitude and longitude variables that are used above as the forms.floatfield.
-    def clean(self):
-        data = super().clean()
-        latitude = data.pop("latitude")
-        longitude = data.pop("longitude")
-        data["location"] = Point(latitude, longitude, srid=4326)
-        return data
+# # CLEAN Method allows us to perform some logic and manipulate the form
+# # The super() method allows us access to the form itself.
+# # Data is a dictionalry with key:value pair we extract into
+# # latitude and longitude variables that are used above as the forms.floatfield.
+#     def clean(self):
+#         data = super().clean()
+#         latitude = data.pop("latitude")
+#         longitude = data.pop("longitude")
+#         data["location"] = Point(latitude, longitude, srid=4326)
+#         return data
 
-#   NOTE this code will overide the init form method. without the overide
-#        the entered latitude and longitude in the form will disapear
-#        The location will be marked on the map but we want to show the
-#         entered latitude and longitude in the form 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        location = self.initial.get("location")
-        if isinstance(location, Point):
-            self.initial["latitude"] = location.tuple[0]
-            self.initial["longitude"] = location.tuple[1]
+# #   NOTE this code will overide the init form method. without the overide
+# #        the entered latitude and longitude in the form will disapear
+# #        The location will be marked on the map but we want to show the
+# #         entered latitude and longitude in the form 
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         location = self.initial.get("location")
+#         if isinstance(location, Point):
+#             self.initial["latitude"] = location.tuple[0]
+#             self.initial["longitude"] = location.tuple[1]
+            
+            
+                #  FORM FUNCTIONALITY END #          
+            
+            
 
 # The super() method allows  acces to the form. the super method
 # is initialized with the .__init__(...)
