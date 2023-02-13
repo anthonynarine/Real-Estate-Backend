@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from listings import views as listings_views 
+# Why did you do this
+from listings import views as listings_views   
 
 # Serving files (images) uploaded by a user during development below imports needed
 from django.conf import settings
@@ -24,6 +25,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/listings/", listings_views.ListingList.as_view()), 
+    path("api/listings/create/", listings_views.CreateListing.as_view()), 
+    # posting property endpoint
+     
     path("api-auth-djoser/", include('djoser.urls')),
     path("api-auth-djoser/", include('djoser.urls.authtoken')),
   

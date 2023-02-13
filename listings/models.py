@@ -3,7 +3,6 @@ from random import choices
 from django.utils import timezone
 from django.contrib.gis.geos import Point
 from django.contrib.auth import get_user_model
-
 User = get_user_model()
 
 
