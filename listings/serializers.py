@@ -2,18 +2,19 @@ from rest_framework import serializers
 from listings.models import Listing
 
 class ListingSerializer(serializers.ModelSerializer):  
+    # the fild you want to add is alway set up with the name of the field then serializers.SerializerMethodField() 
     state = serializers.SerializerMethodField() 
-    seller_username = serializers.SerializerMethodField()
-    
+    seller = serializers.SerializerMethodField()
+        
+    def get_seller_username(self, obj):
+        return obj.seller_username.username   
+         
     def get_state(self, obj):
         return "New York"
-    
-    def get_user(self, obj):
-        return obj.seller_username.username        
     class Meta:
         model= Listing
         fields = "__all__"
-        depth = 1
+
 
         
         

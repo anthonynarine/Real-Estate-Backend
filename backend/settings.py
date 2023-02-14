@@ -163,7 +163,7 @@ if os.name == 'nt':
 # GDAL and GEO Django code block END.
 
 
-#here users is the name of the app User is the User class created in models.py
+#here users is the name of the app, User is the User class created in models.py
 AUTH_USER_MODEL = "users.User"
 
 
