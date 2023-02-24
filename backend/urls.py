@@ -19,6 +19,7 @@ from django.urls import path, include
 from listings import views as listings_views   
 
 # Serving files (images) uploaded by a user during development below imports needed
+# Along with the + static [setting. as shown below]
 from django.conf import settings
 from django.conf.urls.static import static
 

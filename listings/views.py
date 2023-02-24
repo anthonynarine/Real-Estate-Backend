@@ -6,6 +6,7 @@ from listings.models import Listing
 from rest_framework import generics
 
 #class based get all request.
+#This view will show all the property listings in JSON format
 class ListingList(generics.ListAPIView):
     queryset = Listing.objects.all().order_by("-date_posted")  #.order_by("-date_posted") will display listings from newest to oldest
     serializer_class = ListingSerializer

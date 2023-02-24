@@ -2,6 +2,7 @@ from django.contrib.gis.db import models
 from random import choices
 from django.utils import timezone
 from django.contrib.gis.geos import Point
+# from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -50,7 +51,7 @@ class Listing(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
-    # LOCATION FIELD WILL FUNCTIONALIY MOVED TO FRONT END
+    # LOCATION FIELD FUNCTIONALIY Will be MOVED TO FRONT END
     # location = models.PointField(blank=True, null=True, srid=4326)
     picture1 = models.ImageField(blank=True, null=True, upload_to="pictures/%Y/%m/%d/")
     picture2 = models.ImageField(blank=True, null=True, upload_to="pictures/%Y/%m/%d/")
