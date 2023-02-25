@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 # Why did you do this
-from listings import views as listings_views   
+from listings import views as listings_views  
+from users import views as users_views
 
 # Serving files (images) uploaded by a user during development below imports needed
 # Along with the + static [setting. as shown below]
@@ -26,8 +27,14 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/listings/", listings_views.ListingList.as_view()), 
-    path("api/listings/create/", listings_views.CreateListing.as_view()), 
     # posting property endpoint
+    path("api/listings/create/", listings_views.CreateListing.as_view()), 
+    #since we well be accessing single profile we will access it by its pk NOTE the syntax 
+    # its better to identify a profile by the id of the seller than with the id of the profile (pk)   
+    # path("api/profiles/<int:pk>/", users_views.ProfileDetail.as_view()), 
+    path("api/profiles/<int:seller>/", users_views.ProfileDetail.as_view()), 
+    #This endpoint will be a get all profile view
+    path("api/profiles/", users_views.ProfileList.as_view()),
      
     path("api-auth-djoser/", include('djoser.urls')),
     path("api-auth-djoser/", include('djoser.urls.authtoken')),

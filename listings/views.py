@@ -16,6 +16,7 @@ class ListingList(generics.ListAPIView):
 class CreateListing(generics.CreateAPIView):
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
+
     
     
     
