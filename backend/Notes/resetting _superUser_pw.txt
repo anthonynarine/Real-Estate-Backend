@@ -1,0 +1,23 @@
+
+https://www.youtube.com/watch?v=ma9fc5HwZO0
+
+python manage.py shell
+
+>>> from django.contrib.auth import get_user_model
+>>> list(get_user_model().objects.filter(is_superuser=True).values_list("username", flat=True))
+
+superUser username should pop up
+['admin']
+
+
+
+from django.contrib.auth import get_user_model
+def reset_password (u, password):
+    try:
+            user = get_user_model()objects.get(username=u)
+    except:
+            return "User could not be found"
+    user.set_password(password)
+    user.save()
+    retrun "Password has been changed successfully:
+

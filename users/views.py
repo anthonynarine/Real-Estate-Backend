@@ -13,6 +13,12 @@ class ProfileDetail(generics.RetrieveAPIView):
     serializer_class = ProfileSerializer
     lookup_field = "seller"
     
+# View for updating userProfile
+class ProfileUpdate(generics.UpdateAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    lookup_field = "seller"
+    
     
 
 

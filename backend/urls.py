@@ -33,6 +33,7 @@ urlpatterns = [
     # its better to identify a profile by the id of the seller than with the id of the profile (pk)   
     # path("api/profiles/<int:pk>/", users_views.ProfileDetail.as_view()), 
     path("api/profiles/<int:seller>/", users_views.ProfileDetail.as_view()), 
+    path("api/profiles/<int:seller>/update/", users_views.ProfileUpdate.as_view()),
     #This endpoint will be a get all profile view
     path("api/profiles/", users_views.ProfileList.as_view()),
      
