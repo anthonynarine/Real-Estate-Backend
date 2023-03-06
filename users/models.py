@@ -22,7 +22,7 @@ class Profile(models.Model):
     bio = models.TextField(null=True, blank=True)
     profile_picture = models.ImageField(
         upload_to='profile_pictures/%Y/%m/%d/', null=True, blank=True)
-    #path must be give to imagedfield.
+    #path must be given to imagedfield.
 
     def __str__(self):
         return f"Profile of {self.seller.username}"

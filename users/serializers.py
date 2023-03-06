@@ -12,12 +12,14 @@ class ProfileSerializer(serializers.ModelSerializer):
     # we want the seller on the listing to be = to the seller on the serialize obj.     
         query = Listing.objects.filter(seller=obj.seller)
         listings_serialized = ListingSerializer(query, many=True)
+        # print(listings_serialized.data)
         return listings_serialized.data
     # without the .data an object will be returned and throw an error check on postman w/ .data off
         
     class Meta:
         model = Profile
         fields = "__all__"
+        print(Profile)
         
         
         
