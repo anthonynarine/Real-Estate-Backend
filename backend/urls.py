@@ -29,6 +29,7 @@ urlpatterns = [
     path("api/listings/", listings_views.ListingList.as_view()), 
     # posting property endpoint
     path("api/listings/create/", listings_views.CreateListing.as_view()), 
+    path("api/listings/<int:pk>/", listings_views.ListingDetail.as_view()), 
     #since we well be accessing single profile we will access it by its pk NOTE the syntax 
     # its better to identify a profile by the id of the seller than with the id of the profile (pk)   
     # path("api/profiles/<int:pk>/", users_views.ProfileDetail.as_view()), 
