@@ -19,3 +19,9 @@ black = "*"
 
 [requires]
 python_version = "3.10"
+
+
+The psycopg2-binary package is meant 
+for beginners to start playing with Python
+ and PostgreSQL without the need to meet the
+ build requirements.

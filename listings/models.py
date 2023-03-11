@@ -62,20 +62,21 @@ class Listing(models.Model):
     def __str__(self):
         return self.title
     
-    
-    class Poi(models.Model):
-        name = models.CharField(max_length=120, blank=True, null=True)
-        choices_type = (
-            ("Train", "Train"),
-            ("Hospital", "Hospital"),
-            ("Stadium", "Stadium")
-        )
-        type = models.CharField(max_length=50, choices=choices_type)
+
+class Poi(models.Model):
+    name = models.CharField(max_length=120, blank=True, null=True)
+    choices_type = (
+        ("Train", "Train"),
+        ("Hospital", "Hospital"),
+        ("Stadium", "Stadium")
+    )
+    type = models.CharField(max_length=50, choices=choices_type)
 #the point filed will be needed here to use the distance features as opposed to the lat and lng fields as used above
-        location = models.PointField(srid=4326, blank=True, null=True)
-        
-        def __str__(self):
-            return self.name
+    location = models.PointField(srid=4326, blank=True, null=True)
+    #dont forget to register (admin.py) + serialize (serializers.py) this model
+    
+    def __str__(self):
+        return self.name
         
     # pipenv install pillow will allow us to use imageFields in Django.
 

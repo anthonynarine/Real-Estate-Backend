@@ -1,12 +1,31 @@
 from rest_framework import serializers
 from listings.models import Listing
+from listings.models import Poi
+from django.contrib.gis.measure import D # ``D`` is a shortcut for ``Distance``
+from django.contrib.gis.geos import Point
+
 
 class ListingSerializer(serializers.ModelSerializer):  
+    #Adding fields to be serialized to the listing model.
     # the fild you want to add is alway set up with the name of the field then serializers.SerializerMethodField() 
     state = serializers.SerializerMethodField() 
     seller_username = serializers.SerializerMethodField()
     seller_agency_name = serializers.SerializerMethodField()
-
+    listing_poi_within_5miles = serializers.SerializerMethodField()
+    #see notes below on why this filed was limited to 5  mile (approximately 8km)
+    #this query will be very specific to that distance which wil be managed by geoDjango
+    # https://docs.djangoproject.com/en/4.1/ref/contrib/gis/db-api/
+    # see the distance query on above geoDjango docs
+    
+    def get_listing_poi_within_5miles(self, obj):
+        listing_location = Point(obj.latitude, obj.longitude, srid=4326)
+        #query all the poi with a filter thats has a max distance of 5 miles from the listing (see below for further details)
+        query_set = Poi.objects.filter(location__distance_lte=(listing_location, D(mi=3))) 
+        #serialize the query and store it in a variable since there will be more than 1 poi we set many = true
+        query_serialized = PoiSerializer(query_set, many=True)
+        #return the seralized data
+        print (query_serialized.data)
+        return query_serialized.data
     
     def get_seller_agency_name(self, obj):
         return obj.seller.profile.agency_name
@@ -19,6 +38,11 @@ class ListingSerializer(serializers.ModelSerializer):
         return "New York"
     class Meta:
         model= Listing
+        fields = "__all__"
+        
+class PoiSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Poi
         fields = "__all__"
         
 
@@ -67,3 +91,20 @@ class ListingSerializer(serializers.ModelSerializer):
 
 #     def get_days_since_joined(self, obj):
 #         return (now() - obj.date_joined).days
+
+
+#     listing_poi_within_5miles = serializers.SerializerMethodField() 
+    #   if this application was to extended throguhout the usa and not only
+    #   NY all of the Pois would be attached to every listing. for this reason
+    #   i will limit the distance to 3 miles.
+        # import needed
+    #  from django.contrib.gis.measure import D # ``D`` is a shortcut for ``Distance``
+    
+    # query_set = Poi.objects.filter(location__distance_lte=(listing_location, D(mi=5))) 
+    #         location is the location field of the poi model.
+    #         lte is less than or equal too.
+    #         we pass in the location of the property listing (listing_location)
+    #         my model does not have a listing_location field but lat and lng  
+    #         access to the lat and lng fields will come from Point filed (remember this stores a lat and lng coordinates)
+    #         D is the distance  
+            
