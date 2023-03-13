@@ -25,3 +25,6 @@ The psycopg2-binary package is meant
 for beginners to start playing with Python
  and PostgreSQL without the need to meet the
  build requirements.
+
+ GDAL, also known as GDAL/OGR, is a library
+ of tools used for manipulating geospatial data

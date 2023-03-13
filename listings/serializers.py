@@ -24,7 +24,7 @@ class ListingSerializer(serializers.ModelSerializer):
         #serialize the query and store it in a variable since there will be more than 1 poi we set many = true
         query_serialized = PoiSerializer(query_set, many=True)
         #return the seralized data
-        print (query_serialized.data)
+        # print (query_serialized.data)
         return query_serialized.data
     
     def get_seller_agency_name(self, obj):

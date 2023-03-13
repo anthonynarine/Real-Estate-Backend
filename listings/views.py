@@ -30,4 +30,8 @@ class ListingDetail(generics.RetrieveAPIView):
 class ListingDelete(generics.DestroyAPIView):
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
-    #add url path for this view.
+    #add url path for this view - path("api/listings/<int:pk>/delete/", listings_views.ListingDelete.as_view()), 
+class ListingUpdate(generics.UpdateAPIView):
+    queryset = Listing.objects.all()
+    serializer_class = ListingSerializer
+    #add url path for this view - path("api/listings/<int:pk>/update/", listings_views.ListingUpdate.as_view()),
